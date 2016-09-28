@@ -19,7 +19,7 @@ public class EvaluateString {
 //        {
 //            return Integer.toString(tokens[0]+tokens[2]);
 //        }
-        Stack<Integer> values = new Stack<>();
+        Stack<Double> values = new Stack<>();
 
         // Stack for Operators: 'ops'
         Stack<Character> ops = new Stack<>();
@@ -42,7 +42,7 @@ public class EvaluateString {
                 }
                // System.out.println(tokens[i]);
                 //System.out.println(Integer.parseInt(sbuf.toString()));
-                values.push(Integer.parseInt(sbuf.toString()));
+                values.push(Double.parseDouble(sbuf.toString()));
             }
 
             // Current token is an opening brace, push it to 'ops'
@@ -64,9 +64,9 @@ public class EvaluateString {
                 // While top of 'ops' has same or greater precedence to current
                 // token, which is an operator. Apply operator on top of 'ops'
                 // to top two elements in values stack
-                while (!ops.empty() && hasPrecedence(tokens[i], ops.peek()))
+                while (!ops.empty() && hasPrecedence(tokens[i], ops.peek())) {
                     values.push(applyOp(ops.pop(), values.pop(), values.pop()));
-
+                }
                 // Push current token to 'ops'.
                 ops.push(tokens[i]);
                 i++;
@@ -79,7 +79,7 @@ public class EvaluateString {
             values.push(applyOp(ops.pop(), values.pop(), values.pop()));
 
         // Top of 'values' contains result, return it
-        return Integer.toString(values.pop());
+        return Double.toString(values.pop());
     }
 
     // Returns true if 'op2' has higher or same precedence as 'op1',
@@ -96,7 +96,7 @@ public class EvaluateString {
 
     // A utility method to apply an operator 'op' on operands 'a'
     // and 'b'. Return the result.
-    public static int applyOp(char op, int b, int a)
+    public static double applyOp(char op, Double b, Double a)
     {
         switch (op)
         {
@@ -107,9 +107,8 @@ public class EvaluateString {
             case '*':
                 return a * b;
             case '/':
-                if (b == 0)
-                    throw new
-                            UnsupportedOperationException("Cannot divide by zero");
+                if (b != 0)
+
                 return a / b;
         }
         return 0;
