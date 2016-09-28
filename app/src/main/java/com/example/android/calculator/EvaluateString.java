@@ -3,6 +3,8 @@ package com.example.android.calculator;
 import android.os.Debug;
 import android.util.Log;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Stack;
 
 /**
@@ -35,7 +37,7 @@ public class EvaluateString {
             {
                 StringBuffer sbuf = new StringBuffer();
                 // There may be more than one digits in number
-                while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9') {
+                while (i < tokens.length &&((tokens[i] >= '0' && tokens[i] <= '9'))|(tokens[i]=='.')) {
                     sbuf.append(tokens[i++]);
                     //System.out.println("loop");
                    // Log.i("h", "I");
@@ -79,7 +81,9 @@ public class EvaluateString {
             values.push(applyOp(ops.pop(), values.pop(), values.pop()));
 
         // Top of 'values' contains result, return it
-        return Double.toString(values.pop());
+        DecimalFormat df = new DecimalFormat("#.######");
+        //df.setRoundingMode(RoundingMode.CEILING);
+        return (df.format(values.pop()).toString());
     }
 
     // Returns true if 'op2' has higher or same precedence as 'op1',

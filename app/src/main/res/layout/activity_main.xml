@@ -195,14 +195,17 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="="
-                android:onClick="evaluate"
+                android:text="."
+                android:onClick="onclickbutton"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:background="@color/button_color"
                 android:padding="0dp"
                 android:textColor="@color/primtext"
                 android:textSize="35dp"
-                android:layout_margin="0dp" />
+                android:layout_margin="0dp"
+                android:textStyle="bold" />
+
+
 
 
 
@@ -234,7 +237,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="+"
-                android:onClick="onclickbutton"
+                android:onClick="onclickop"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:background="@color/buttonsec"
                 android:padding="0dp"
@@ -247,7 +250,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="-"
-                android:onClick="onclickbutton"
+                android:onClick="onclickop"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:background="@color/buttonsec"
                 android:padding="0dp"
@@ -263,7 +266,7 @@
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:background="@color/buttonsec"
                 android:padding="0dp"
-                android:onClick="onclickbutton"
+                android:onClick="onclickop"
                 android:textColor="@color/sectext"
                 android:textSize="30dp"
                 android:layout_margin="0dp" />
@@ -273,12 +276,24 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="/"
-                android:onClick="onclickbutton"
+                android:onClick="onclickop"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:background="@color/buttonsec"
                 android:padding="0dp"
                 android:textColor="@color/sectext"
                 android:textSize="30dp"
+                android:layout_margin="0dp" />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="="
+                android:onClick="evaluate"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:background="@color/buttonsec"
+                android:padding="0dp"
+                android:textColor="@color/sectext"
+                android:textSize="35dp"
                 android:layout_margin="0dp" />
 
         </LinearLayout>

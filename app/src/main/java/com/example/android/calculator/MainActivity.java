@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Stack;
 
 import java.util.Stack;
@@ -32,6 +35,21 @@ public class MainActivity extends Activity {
         display(exp);
     }
 
+    public void onclickop(View v)
+    {
+        Button op=(Button) v;
+        if(exp.length()>0) {
+            char temp = exp.substring(exp.length() - 1, exp.length()).toCharArray()[0];
+            if (temp == '+' | temp == '-' | temp == '*' | temp == '/') {
+                System.out.print(exp);
+                exp = exp.substring(0, exp.length() - 1) + op.getText();
+            } else {
+                exp = exp + op.getText();
+            }
+            display(exp);
+        }
+    }
+
     public void delete(View v)
     {
         if(exp!=null&&exp.length()>0)
@@ -45,6 +63,7 @@ public class MainActivity extends Activity {
     }
 
     public void evaluate(View v) {
+
         exp=""+EvaluateString.evaluate(exp);
         tv.setText(exp);
     }
